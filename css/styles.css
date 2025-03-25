@@ -1,15 +1,82 @@
 body {
-    background-color: darkblue;
+    background-color: blueviolet;
+}
+
+.container {
+    background-color: aqua;
 }
 
 .header {
-    background-color: deepskyblue;
-}
-
-.header a {
-    color: black;
+    background-color: brown;
+    padding-bottom: 7%;
 }
 
 .name_header {
+    background-color: antiquewhite;
+    float: left;
+    margin-left: 1%;
+    font-size: 18px;
+}
 
+.icons_header {
+    background-color: gray;
+    text-align: right;
+    margin-right: 1%;
+    word-spacing: 700%;
+    font-size: 18px;
+}
+
+.introduction {
+    background-color: green;
+    float: left;
+    width: 60%;
+    padding-left: 5%;
+    padding-right: 5%;
+    display: flex;
+}
+
+.intro_image {
+    background-color: blue;
+    float: left;
+    padding: 5%;
+}
+
+.intro_image img {
+    width: 200px;
+    height: 100%;
+}
+
+.intro_text {
+    background-color: bisque;
+    padding: 5%;
+}
+
+.sidebar {
+    background-color: greenyellow;
+    float: right;
+    width: 20%;
+    padding: 0 5%;
+    height: 400px;
+}
+
+.featured_project {
+    background-color: aquamarine;
+    padding: 15%;
+}
+
+.project_image {
+    background-color: white;
+}
+
+.project_description {
+    background-color: orange;
+}
+
+.app_library {
+    background-color: yellow;
+    float: left;
+}
+
+.app {
+    background-color: burlywood;
 }
