@@ -1,82 +1,107 @@
-body {
-    background-color: blueviolet;
-}
+/*
+Deep Blue #031930
+Dark Blue #223A59
+Blue #3684D8
+Light Blue #B3D6F9
+Light Blue #758BA5
+Gray #D1DDED
+*/
 
-.container {
-    background-color: aqua;
+body {
+    background-image: url("../media/background.png");
+    background-repeat: repeat;
+    background-color: #031930;
 }
 
 .header {
-    background-color: brown;
-    padding-bottom: 7%;
+    /*background-color: brown;*/
+    padding-bottom: 3%;
+}
+
+.header a {
+    text-decoration: none;
+    color: white;
+}
+
+.header a:hover {
+    text-decoration: underline;
+}
+
+.header a:active {
+    text-decoration: underline;
+    color: #031930;
 }
 
 .name_header {
-    background-color: antiquewhite;
+    background-color: #223A59;
     float: left;
-    margin-left: 1%;
+    padding: 0.5% 2%;
     font-size: 18px;
 }
 
 .icons_header {
-    background-color: gray;
+    background-color: #223A59;
     text-align: right;
-    margin-right: 1%;
     word-spacing: 700%;
     font-size: 18px;
+    padding: 0.5% 2%;
 }
 
 .introduction {
-    background-color: green;
     float: left;
     width: 60%;
-    padding-left: 5%;
-    padding-right: 5%;
+    padding: 5% 5%;
     display: flex;
 }
 
+
 .intro_image {
-    background-color: blue;
+    background-color: rgba(5,34,68,0.5);
     float: left;
-    padding: 5%;
+    padding: 7% 0 7% 8%;
+    opacity: 1;
 }
 
 .intro_image img {
-    width: 200px;
+    width: 300px;
     height: 100%;
+    border-radius: 55%;
 }
 
 .intro_text {
-    background-color: bisque;
+    background-color: rgba(5,34,68,0.5);
     padding: 5%;
 }
 
 .sidebar {
-    background-color: greenyellow;
+    /*background-color: greenyellow;*/
     float: right;
     width: 20%;
-    padding: 0 5%;
-    height: 400px;
+    padding: 5% 5%;
+    display: flex;
 }
 
 .featured_project {
-    background-color: aquamarine;
+    background-color: #223A59;
     padding: 15%;
 }
 
 .project_image {
-    background-color: white;
+    background-color: #3684D8;
 }
 
 .project_description {
-    background-color: orange;
+    background-color: #3684D8;
 }
 
 .app_library {
-    background-color: yellow;
+    /*background-color: yellow;*/
+    padding: 5% 10% 5% 15%;
     float: left;
+    display: flex;
 }
 
-.app {
-    background-color: burlywood;
+.apps {
+    text-align: center;
+    word-spacing: 100px;
 }
