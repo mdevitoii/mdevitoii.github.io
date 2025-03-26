@@ -8,6 +8,7 @@ Gray #D1DDED
 */
 
 body {
+    padding: 0;
     background-image: url("../media/background.png");
     background-repeat: repeat;
     background-color: #031930;
@@ -83,20 +84,28 @@ body {
 
 .featured_project {
     background-color: #223A59;
-    padding: 15%;
+    padding: 5%;
 }
 
 .project_image {
     background-color: #3684D8;
+    padding: 5%;
+    text-align: center;
 }
 
 .project_description {
     background-color: #3684D8;
+    padding: 5%;
+}
+
+.project_description h3 {
+    line-height: 10px;
+    padding-top: 5%;
 }
 
 .app_library {
     /*background-color: yellow;*/
-    padding: 5% 10% 5% 15%;
+    padding: 5% 10% 0 15%;
     float: left;
     display: flex;
 }
@@ -104,4 +113,9 @@ body {
 .apps {
     text-align: center;
     word-spacing: 100px;
+}
+
+footer {
+    float: right;
+    padding-top: 3.5%;
 }
