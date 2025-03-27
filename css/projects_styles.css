@@ -20,6 +20,10 @@
     padding: 2%;
 }
 
+.main_content {
+    padding-top: 1%;
+}
+
 .project_image, .project_description {
     padding: 7%;
 }

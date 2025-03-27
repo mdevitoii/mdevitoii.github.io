@@ -1,0 +1,29 @@
+.title {
+    text-align: center;
+    margin: 4% 20% 0 20%;
+    padding: 0.5% 0;
+    background-color: rgba(5,34,68,0.7);
+}
+
+.contact_form {
+    align-items: center;
+    width: 60%; /* Ensure the width is defined */
+    padding: 3% 0%;
+    background-color: rgba(5,34,68,0.5);
+    margin: 0 auto; 
+    margin-top: 3%;
+}
+.iframe {
+    background-color: rgba(5,34,68,1);
+    display: flex; /* Enables Flexbox */
+    justify-content: center; /* Centers the iframe horizontally */
+    align-items: center; /* Centers the iframe vertically */
+    margin: 0 auto; /* Centers the .iframe div itself horizontally if needed */
+    padding: 20px; /* Optional: Add padding around the iframe */
+    width: 60%; /* Adjust width as needed */
+}
+
+.iframe iframe {
+    max-width: 100%; /* Ensures the iframe doesn't exceed the parent width */
+    border: none; /* Removes the border for a cleaner look */
+}

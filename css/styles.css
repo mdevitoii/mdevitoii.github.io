@@ -11,16 +11,34 @@
 
 body {
     padding: 0;
+    margin: 0;
     background-image: url("../media/background.png");
     background-repeat: repeat;
     background-color: #031930;
 }
 
+.header_background {
+    padding: 0;
+    margin: 0;
+}
+
+.header_background img {
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    width: 100%; /* Make it span the full width */
+    position: fixed;/* Ensure the image covers the entire div */
+    height: 3%;
+    z-index: 3;
+}
+
 .header {
     padding-bottom: 0%;
+    margin: 1%;
     position: fixed;
-    width: 100%;
+    width: 98%;
     background-color: #223A59;
+    z-index: 3;
 }
 
 .header a {
@@ -60,7 +78,8 @@ body {
 }
 
 .main_content {
-    padding-top: 1%;
+    padding-top: 3%;
+    z-index: 1;
 }
 
 .introduction {

@@ -1,18 +1,22 @@
 /* Michael DeVito II */
 
 body {
-    display: flex;
+    justify-content: center;
+}
+
+.main_content {
+    padding-top: 1%;
+    align-items: center;
 }
 
 .about_me {
     color: white;
-
-    margin: 2.5%;
+    width: 80%;
+    margin: 2.5% auto;
     padding: 1.5% 2.5%;
 }
 
 .about_images {
-
     background-color: rgba(5,34,68,0.5);
     align-items: center;
     justify-content: center;
@@ -45,8 +49,4 @@ body {
 
 .about_text h1 {
     text-align: center;
-}
-
-.about_text p {
-
 }
