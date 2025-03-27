@@ -1,0 +1,41 @@
+
+.project_intro {
+    text-align: center;
+    margin: 4% 20% 0 20%;
+    padding: 0.5% 0;
+    background-color: rgba(5,34,68,0.7);
+}
+
+.project {
+    padding: 2% 5% 0 5%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.featured_project {
+    max-width: 30%;
+    box-sizing: border-box;
+    padding: 2%;
+}
+
+.project_image, .project_description {
+    padding: 7%;
+}
+
+.project_image {
+    padding-bottom: 0;
+}
+
+.project_image img {
+    width: 500px;
+    max-width: 100%;
+    padding-bottom: 0;
+}
+
+.project_description h3 {
+    line-height: 30px;
+    text-align: center;
+    padding-top: 0;
+}
