@@ -185,6 +185,75 @@
 			font-size: 0.8rem;
 			color: var(--ink-soft);
 		}
+		
+		/* Side Terminal CSS */
+		.page {
+			display: flex;
+			min-height: 100vh;
+		}
+
+		.terminal-pane {
+			width: 340px;
+			flex-shrink; 0;
+			position: sticky;
+			top: 0;
+			height: 100vh;
+			overflow-y: auto;
+			background: var(--panel);
+			border-right: 1px solid var(--rule);
+			padding: 32px 24px;
+			font-family: 'JetBrains Mono', monospace;
+			font-size: 0.82rem;
+			line-height: 1.8;
+		}
+
+		.content-pane {
+			flex: 1;
+			padding: 72px 48px;
+			max-width: 680px;
+		}
+
+		.content-pane .page-content {
+			display: none;
+		}
+
+		.content-pane .page-content.active {
+			display: block;
+		}
+
+		.term-line {
+			color: var(--sage);
+		}
+		
+		.term-line .path {
+			color: var(--ink-soft);
+		}
+
+		.term-listing {
+			margin: 4px 0 14px;
+		}
+		
+		.term-listing a {
+			display: block;
+			color: var(--ink);
+			text-decoration: none;
+		}
+
+		.term-listing a:hover {
+			color: var(--sage);
+		}
+
+		.term-listing .perm {
+			color: var(--ink-soft);
+			margin-right: 10px;
+		}
+		
+		@media (max-width: 800px) {
+			.page { flex-direction: column; }
+			.terminal-pane { width: 100%; position: static; height: auto; }
+			.content-pane { padding: 40px 24px; }
+		}
+
 
 	</style>
 </head>
