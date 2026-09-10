@@ -259,53 +259,46 @@
 </head>
 <body>
 	<div class="wrap">
-		
-	<p class="prompt">guest@mdevito:~<span class="path">$ cd /var/log/michael</span><span class="cursor"></span></p>
-	<h1>Michael DeVito II</h1>
-	<p class="role">Honors Cybersecurity Student, SOC Leader, Aspiring System Administrator</p>
-
-	<div class="terminal">
-		<p class="line">guest@mdevito:~/var/log/michael<span class="path">$ ls -la</span></p>
-		<div class="listing">
-							<a href="hardening-my-first-server/"><span class="perm">-rw-r--r--</span>hardening-my-first-server.md</a>
-							<a href="setting-up-homelab/"><span class="perm">-rw-r--r--</span>setting-up-homelab.md</a>
-					</div>
-
-		<p class="line">guest@mdevito:~/var/log/michael<span class="path">$ cat about.md</p>
-		<p class="out">
-			This is my description!
-		</p>
-
+		<div class="page">
+	
+	<div class="terminal-pane" id="terminal">
+		<!-- This will get filled with JS -->
 	</div>
 
-	<div class="links">
-		<a href="mailto:mdevitoii04@gmail.com">mdevitoii04@gmail.com</a>
-		<a href="https://github.com/mdevitoii">github.com/mdevitoii</a>
-	</div>
+	<div class="content-pane">
 
-	<section id="posts">
-		<div class="section-head">
-			<span class="breadcrumb">~/var/log/michael/posts</span>
-			<h2>Posts</h2>
-			<div class="rule"></div>
+		<div class="page-content active" id="content-/">
+
+			<h1>Michael DeVito II</h1>
+			<p class="role">Honors Cybersecurity Student, Aspiring System Administrator</p>
+			<p>Short intro</p>
+
+			<h2>Certifications</h2>
+			<p>brief overview</p>
+			
+			<h2>Recent Posts</h2>
+			<p>list 2-3 most recent posts</p>
+
 		</div>
 
-					<div class="entry">
-				<div class="entry-title">
-					<h3><a href="hardening-my-first-server/">Hardening my first server</a></h3>
-					<span class="entry-meta">Sep 2026</span>
-				</div>
-				<p class="entry-desc">Locking down SSH and setting up fail2ban on a new Ubuntu box.</p>
-			</div>
-					<div class="entry">
-				<div class="entry-title">
-					<h3><a href="setting-up-homelab/">Setting up my homelab</a></h3>
-					<span class="entry-meta">Aug 2026</span>
-				</div>
-				<p class="entry-desc">Windows Server and Linux side by side.</p>
-			</div>
-			</section>
+		<div class="page-content" id="content-/certs">
 
+			<h1>Certifications</h1>
+			<p>overview of certs directory</p>
+
+		</div>
+
+		<div class="page-content" id="content-/projects">
+
+			<h1>Projects</h1>
+			<p>overview of projects directory</p>
+
+		</div>
+
+		<!-- more sections can be added using the same pattern -->
+
+	</div>
+</div>
 	</div>
 
 </body>	
