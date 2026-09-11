@@ -5,6 +5,7 @@
  */
 
 :root {
+	/* Defining vars to be used (ex: custom colors) */
 	--accent: #2337ff;
 	--accent-dark: #000d8a;
 	--black: 15, 18, 25;
