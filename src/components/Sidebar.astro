@@ -4,48 +4,49 @@ import { getCollection } from 'astro:content';
 
 const projects = await getCollection('projects'); // reads every file in /src/content/projects 
 const coursework = await getCollection('coursework'); // reads every file in /src/content/coursework 
+const certs = await getCollection('certs'); // reads every file in /src/content/coursework 
 
 ---
 
-<header>
-	<nav>
-		<h2><a href="/">{SITE_TITLE}</a></h2>
-		
-		<p>guest@mdevito:~$ cd /var/log/michael</p>
-		<p>guest@mdevito:/var/log/michael$ ls -la</p>
+<nav>
+	<h2><a href="/">{SITE_TITLE}</a></h2>
+	
+	<p>guest@mdevito:~$ cd /var/log/michael</p>
+	<p>guest@mdevito:/var/log/michael$ ls -la</p>
 
-		<a>drwxr-xr-x projects/</a>
+	<details>
+		<summary>&gt; projects/</summary>
+		<ul>
+			{ projects.map((project) => (
+				<li>
+					<a href={`/projects/${project.id}`}>{project.data.title}</a>
+				</li>
+			))}
+		</ul>
+	</details>
+	<details>
+		<summary>&gt; coursework/</summary>
+		<ul>
+			{ coursework.map((work) => (
+				<li>
+					<a href={`/projects/${work.id}`}>{work.data.title}</a>
+				</li>
+			))}
+		</ul>
+	</details>
+	<details>
+		<summary>&gt; certs/</summary>
+		<ul>
+			{ certs.map((cert) => (
+				<li>
+					<a href={`/projects/${cert.id}`}>{cert.data.title}</a>
+				</li>
+			))}
+		</ul>
+	</details>
+	<a>-rw-r--r-- resume.md</a>
 
-		<details>
-			<summary>&gt; projects</summary>
-			<ul>
-				{ projects.map((project) => (
-					<li>
-						<a href={`/projects/${project.id}`}>{project.data.title}</a>
-					</li>
-				))}
-			</ul>
-		</details>
-		<details>
-			<summary>&gt; coursework</summary>
-			<ul>
-				{ coursework.map((work) => (
-					<li>
-						<a href={`/projects/${work.id}`}>{work.data.title}</a>
-					</li>
-				))}
-			</ul>
-		</details>
-
-		<a>drwxr-xr-x coursework/</a>
-		<a>-rw-r--r-- certs</a>
-		<a>-rw-r--r-- resume.md</a>
-
-		
-
-
-	</nav>
-</header>
+</nav>
 <style>
 	
 </style>

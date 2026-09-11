@@ -1,5 +1,7 @@
 ---
-import BaseHead from '../components/BaseHead.astro'; 
+import { ClientRouter } from 'astro:transitions';
+import BaseHead from '../components/BaseHead.astro';
+import Sidebar from '../components/Sidebar.astro'; 
 
 const { title, description, updatedDate } = Astro.props; // grabs vars from props
 ---
@@ -9,10 +11,13 @@ const { title, description, updatedDate } = Astro.props; // grabs vars from prop
 <html lang="en">
 	<head>
         <BaseHead title={title} description={description} />
-
+        <ClientRouter />
     </head>
     <body>
-
+        <div>
+            <Sidebar transition:persist />
+        </div>
+        
 
     </body>
 </html> 
