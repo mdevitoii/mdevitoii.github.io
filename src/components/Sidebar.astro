@@ -1,0 +1,51 @@
+---
+import { SITE_TITLE } from '../consts';
+import { getCollection } from 'astro:content'; 
+
+const projects = await getCollection('projects'); // reads every file in /src/content/projects 
+const coursework = await getCollection('coursework'); // reads every file in /src/content/coursework 
+
+---
+
+<header>
+	<nav>
+		<h2><a href="/">{SITE_TITLE}</a></h2>
+		
+		<p>guest@mdevito:~$ cd /var/log/michael</p>
+		<p>guest@mdevito:/var/log/michael$ ls -la</p>
+
+		<a>drwxr-xr-x projects/</a>
+
+		<details>
+			<summary>&gt; projects</summary>
+			<ul>
+				{ projects.map((project) => (
+					<li>
+						<a href={`/projects/${project.id}`}>{project.data.title}</a>
+					</li>
+				))}
+			</ul>
+		</details>
+		<details>
+			<summary>&gt; coursework</summary>
+			<ul>
+				{ coursework.map((work) => (
+					<li>
+						<a href={`/projects/${work.id}`}>{work.data.title}</a>
+					</li>
+				))}
+			</ul>
+		</details>
+
+		<a>drwxr-xr-x coursework/</a>
+		<a>-rw-r--r-- certs</a>
+		<a>-rw-r--r-- resume.md</a>
+
+		
+
+
+	</nav>
+</header>
+<style>
+	
+</style>
