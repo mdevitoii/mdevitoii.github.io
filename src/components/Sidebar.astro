@@ -34,16 +34,7 @@ const certs = await getCollection('certs'); // reads every file in /src/content/
 			))}
 		</ul>
 	</details>
-	<details>
-		<summary>&gt; certs/</summary>
-		<ul>
-			{ certs.map((cert) => (
-				<li>
-					<a href={`/projects/${cert.id}`}>{cert.data.title}</a>
-				</li>
-			))}
-		</ul>
-	</details>
+	<a>-rw-r--r-- certs.md</a>
 	<a>-rw-r--r-- resume.md</a>
 
 </nav>

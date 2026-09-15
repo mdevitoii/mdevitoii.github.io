@@ -26,16 +26,4 @@ const coursework = defineCollection({
 		}),
 });
 
-const certs = defineCollection({
-	loader: glob({ base: './src/content/certs', pattern: '**/*.{md,mdx}' }),
-	schema: ({ image }) =>
-		z.object({
-			title: z.string(),
-			description: z.string(),
-			pubDate: z.coerce.date(),
-			updatedDate: z.coerce.date().optional(),
-			heroImage: z.optional(image()),
-		}),
-});
-
-export const collections = { projects, coursework, certs };
+export const collections = { projects, coursework };
