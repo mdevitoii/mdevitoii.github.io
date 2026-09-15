@@ -4,40 +4,170 @@ import { getCollection } from 'astro:content';
 
 const projects = await getCollection('projects'); // reads every file in /src/content/projects 
 const coursework = await getCollection('coursework'); // reads every file in /src/content/coursework 
-const certs = await getCollection('certs'); // reads every file in /src/content/coursework 
 
 ---
 
-<nav>
-	<h2><a href="/">{SITE_TITLE}</a></h2>
-	
-	<p>guest@mdevito:~$ cd /var/log/michael</p>
-	<p>guest@mdevito:/var/log/michael$ ls -la</p>
-
-	<details>
-		<summary>&gt; projects/</summary>
-		<ul>
-			{ projects.map((project) => (
-				<li>
-					<a href={`/projects/${project.id}`}>{project.data.title}</a>
-				</li>
-			))}
-		</ul>
-	</details>
-	<details>
-		<summary>&gt; coursework/</summary>
-		<ul>
-			{ coursework.map((work) => (
-				<li>
-					<a href={`/projects/${work.id}`}>{work.data.title}</a>
-				</li>
-			))}
-		</ul>
-	</details>
-	<a>-rw-r--r-- certs.md</a>
-	<a>-rw-r--r-- resume.md</a>
-
-</nav>
 <style>
-	
+	/* CSS for terminal sidebar */
+
+	.terminal {
+		background-color: #0d0f0c;
+		color: #c8d6c0;
+		font-family: 'JetBrains Mono', 'Fira Code', monospace;
+		font-size: 0.95rem;
+		line-height: 1.2;
+		padding: 5rem 1.5rem;
+		border-right: 1px solid #1f261c;
+		transition: transform 0.25s ease;
+	}
+
+	.terminal.is-hidden {
+		transform: translateX(-100%);
+	}
+
+	#nav-toggle {
+		position: fixed;
+		top: 1rem;
+		left: 1rem;
+		z-index: 10;
+		background: none;
+		border: none;
+		color: #c8d6c0;
+		font-size: 1.5rem;
+		cursor: pointer;
+	}
+
+	.terminal-title {
+		color: #6fae57;
+	}
+
+	.terminal-title a::before {
+		content: '';
+	}
+
+	.terminal-prompt {
+		color: #6fae57;
+	}
+
+	#blink {
+		color: #6fae57;
+	}
+
+	#blink::after {
+		content: '_';
+		animation: blink 1s step-end infinite;
+		margin-left: 2px;
+	}
+
+	@keyframes blink {
+		50% { opacity: 0; }
+	}
+
+	.terminal-nav {
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+	}
+
+	.terminal-nav > * {
+		margin: 0;
+	}
+
+	.terminal-nav summary {
+		cursor: pointer;
+		color: #8fbf7a;
+		list-style: none;
+	}
+
+	.terminal-nav summary::-webkit-details-marker {
+		display: none;
+	}
+
+	.terminal-nav summary::before {
+		content: 'drwxr-xr-x   ';
+		color: #4a7a3a;
+	}
+
+	.nav-link {
+		margin-left: 2rem;
+	}
+
+	.terminal-nav a {
+		color: #8fbf7a;
+		text-decoration: none;
+	}
+
+	.terminal-nav li {
+		margin: 0;
+		padding: 0;
+	}
+
+	.terminal-nav ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	.terminal-nav details {
+		margin: 0;
+		padding: 0;
+	}
+
+	#file::before {
+		content: '-rw-r--r--   ';
+		color: #4a7a3a;
+	}
+
+	.terminal-nav a:hover {
+		color: #d4f5c0;
+		text-decoration: underline;
+	}
+
 </style>
+
+<button id="nav-toggle" aria-label="Toggle navigation" aria-expanded="true">
+	☰
+</button>
+
+<div class="terminal" id="terminal">
+	<nav class="terminal-nav">
+		<h2 class="terminal-title"><a href="/">{SITE_TITLE}</a></h2>
+		
+		<p class="terminal-prompt">guest@mdevito:~$ cd /var/log/michael</p>
+		<p class="terminal-prompt" id="blink">guest@mdevito:/var/log/michael$ ls -la</p>
+
+		<details>
+			<summary>&gt; projects/</summary>
+			<ul>
+				{ projects.map((project) => (
+					<li>
+						<a class="nav-link" id="file" href={`/projects/${project.id}`}>{project.data.title}</a>
+					</li>
+				))}
+			</ul>
+		</details>
+		<details>
+			<summary>&gt; coursework/</summary>
+			<ul>
+				{ coursework.map((work) => (
+					<li>
+						<a class="nav-link" id="file" href={`/coursework/${work.id}`}>{work.data.title}</a>
+					</li>
+				))}
+			</ul>
+		</details>
+		<a id="file">certs.md</a>
+		<a id="file">resume.md</a>
+
+	</nav>
+</div>
+
+<script>
+	const toggle = document.querySelector('#nav-toggle');
+	const terminal = document.querySelector('#terminal');
+
+	toggle?.addEventListener('click', () => {
+		const isHidden = terminal?.classList.toggle('is-hidden');
+		toggle.setAttribute('aria-expanded', String(!isHidden));
+	});
+</script>
