@@ -17,6 +17,9 @@ const { title, description, updatedDate } = Astro.props; // grabs vars from prop
         <div>
             <Sidebar transition:persist />
         </div>
+        <div>
+            <slot />
+        </div>
         
 
     </body>
