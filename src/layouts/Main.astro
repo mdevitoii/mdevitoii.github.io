@@ -3,24 +3,44 @@ import { ClientRouter } from 'astro:transitions';
 import BaseHead from '../components/BaseHead.astro';
 import Sidebar from '../components/Sidebar.astro'; 
 
-const { title, description, updatedDate } = Astro.props; // grabs vars from props
+const { title, description } = Astro.props; // grabs vars from props
 ---
 
 <!-- Michael DeVito II -->
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-        <BaseHead title={title} description={description} />
-        <ClientRouter />
-    </head>
-    <body>
-        <div>
-            <Sidebar transition:persist />
-        </div>
-        <div>
+<head>
+    <BaseHead title={title} description={description} />
+    <ClientRouter />
+</head>
+<body>
+    <div class="page-layout">
+        <Sidebar transition:persist />
+        <div class="content">
             <slot />
         </div>
-        
+        <h1>TEST</h1>
+        <footer class="footer">
+            <!-- footer content -->
+        </footer>
+    </div>
+</body>
 
-    </body>
-</html> 
+<style>
+    .page-layout {
+        display: grid;
+        grid-template-columns: 15% 85%;
+        grid-template-rows: 1fr auto;
+        grid-template-areas:
+            "terminal content"
+            "footer footer";
+        min-height: 100vh;
+    }
+
+    .content {
+        grid-area: content;
+    }
+
+    .footer {
+        grid-area: footer;
+    }
+    
+</style>
