@@ -1,46 +1,122 @@
 ---
 import { ClientRouter } from 'astro:transitions';
 import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
 import Sidebar from '../components/Sidebar.astro'; 
 
 const { title, description } = Astro.props; // grabs vars from props
 ---
 
 <!-- Michael DeVito II -->
-<head>
-    <BaseHead title={title} description={description} />
-    <ClientRouter />
-</head>
-<body>
-    <div class="page-layout">
-        <Sidebar transition:persist />
-        <div class="content">
-            <slot />
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <BaseHead title={title} description={description} />
+        <ClientRouter />
+    </head>
+    <body>
+        <div class="page-layout">
+            <header class="header">
+                <a href="/">Michael DeVito II</a>
+            </header>
+
+            <aside class="sidebar">
+                <div class="terminal">
+                    <div class="terminal-bar">guest@mdevito:~</div>
+                    <Sidebar transition:persist />
+                </div>
+            </aside>
+
+            <main class="content">
+                <slot />
+            </main>
+
+            <footer class="footer">
+                <Footer />
+            </footer>
+
         </div>
-        <h1>TEST</h1>
-        <footer class="footer">
-            <!-- footer content -->
-        </footer>
-    </div>
-</body>
+    </body>
+</html>
 
 <style>
     .page-layout {
-        display: grid;
-        grid-template-columns: 15% 85%;
-        grid-template-rows: 1fr auto;
-        grid-template-areas:
-            "terminal content"
-            "footer footer";
         min-height: 100vh;
+        display: grid;
+        grid-template-columns: 25vw minmax(0, 1fr);
+        grid-template-rows: auto 1fr auto;
+        grid-template-areas: 
+            "header header"
+            "sidebar content"
+            "footer footer";
+    }
+
+    .header {
+        grid-area: header;
+        padding: 1rem 2rem;
+        border-bottom: 1px solid #334155;
+    }
+
+    .header a {
+        color: inherit;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .sidebar {
+        grid-area: sidebar;
+        align-self: start;
+        padding: 1rem;
+    }
+
+    .terminal {
+        position: sticky;
+        top: 1rem;
+        overflow: hidden;
+        width: 100%;
+        box-sizing: border-box;
+        border: 1px solid #334155;
+        border-radius: 0.75rem;
+        background: #111827;
+    }
+
+    .terminal-bar {
+        padding: 0.75rem 1rem;
+        border-bottom: 1px solid #334155;
+        color: #94a3b8;
+        font: 0.85rem monospace;
     }
 
     .content {
         grid-area: content;
+        min-width: 0;
+        padding: 2rem;
     }
 
     .footer {
         grid-area: footer;
+        padding: 1rem 2rem;
+        border-top: 1px solid #334155;
+    }
+
+    @media (max-width: 700px) {
+        .page-layout {
+            grid-template-columns: 1fr;
+            grid-template-areas: 
+                "header"
+                "sidebar"
+                "content"
+                "footer";
+        }
+
+        .content {
+            padding: 1rem;
+        }
+
+        .terminal {
+            position: static;
+        }
     }
     
 </style>

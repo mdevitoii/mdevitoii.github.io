@@ -10,31 +10,16 @@ const coursework = await getCollection('coursework'); // reads every file in /sr
 <style>
 	/* CSS for terminal sidebar */
 
-	.terminal {
-		background-color: #0d0f0c;
-		color: #c8d6c0;
-		font-family: 'JetBrains Mono', 'Fira Code', monospace;
-		font-size: 0.95rem;
-		line-height: 1.2;
-		padding: 5rem 1.5rem;
-		border-right: 1px solid #1f261c;
-		transition: transform 0.25s ease;
+	#terminal {
+		padding: 1rem 1.25rem;
 	}
 
 	.terminal.is-hidden {
-		transform: translateX(-100%);
+		display: none;
 	}
 
 	#nav-toggle {
-		position: fixed;
-		top: 1rem;
-		left: 1rem;
-		z-index: 10;
-		background: none;
-		border: none;
-		color: #c8d6c0;
-		font-size: 1.5rem;
-		cursor: pointer;
+		display: none;
 	}
 
 	.terminal-title {
@@ -108,12 +93,16 @@ const coursework = await getCollection('coursework'); // reads every file in /sr
 		padding: 0;
 	}
 
+	.terminal-nav h2 {
+		font-size: 40px;
+	}
+
 	.terminal-nav details {
 		margin: 0;
 		padding: 0;
 	}
 
-	#file::before {
+	.file::before {
 		content: '-rw-r--r--   ';
 		color: #4a7a3a;
 	}
@@ -123,13 +112,28 @@ const coursework = await getCollection('coursework'); // reads every file in /sr
 		text-decoration: underline;
 	}
 
+	@media (max-width: 700px) {
+		#nav-toggle {
+			display: block;
+			position: absolute;
+			top: 1rem;
+			right: 1rem;
+			z-index: 10;
+			background: none;
+			border: none;
+			color: #c8d6c0;
+			font-size: 1.5rem;
+			cursor: pointer;
+		}
+	}
+
 </style>
 
 <button id="nav-toggle" aria-label="Toggle navigation" aria-expanded="true">
 	☰
 </button>
 
-<div class="terminal" id="terminal">
+<div id="terminal">
 	<nav class="terminal-nav">
 		<h2 class="terminal-title"><a href="/">{SITE_TITLE}</a></h2>
 		
@@ -141,7 +145,7 @@ const coursework = await getCollection('coursework'); // reads every file in /sr
 			<ul>
 				{ projects.map((project) => (
 					<li>
-						<a class="nav-link" id="file" href={`/projects/${project.id}`}>{project.data.title}</a>
+						<a class="nav-link file" href={`/projects/${project.id}`}>{project.data.title}</a>
 					</li>
 				))}
 			</ul>
@@ -151,13 +155,13 @@ const coursework = await getCollection('coursework'); // reads every file in /sr
 			<ul>
 				{ coursework.map((work) => (
 					<li>
-						<a class="nav-link" id="file" href={`/coursework/${work.id}`}>{work.data.title}</a>
+						<a class="nav-link file" href={`/coursework/${work.id}`}>{work.data.title}</a>
 					</li>
 				))}
 			</ul>
 		</details>
-		<a id="file">certs.md</a>
-		<a id="file">resume.md</a>
+		<a class="file">certs.md</a>
+		<a class="file">resume.md</a>
 
 	</nav>
 </div>
