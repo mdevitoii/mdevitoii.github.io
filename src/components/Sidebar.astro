@@ -1,9 +1,11 @@
 ---
-import { SITE_TITLE } from '../consts';
 import { getCollection } from 'astro:content'; 
 
 const projects = await getCollection('projects'); // reads every file in /src/content/projects 
 const coursework = await getCollection('coursework'); // reads every file in /src/content/coursework 
+const normalizePath = (path: string) => path.replace(/\/$/, '') || '/';
+const currentPath = normalizePath(Astro.url.pathname);
+const shortPath = currentPath.split("/").pop();
 
 ---
 
@@ -112,6 +114,10 @@ const coursework = await getCollection('coursework'); // reads every file in /sr
 		text-decoration: underline;
 	}
 
+	.terminal-nav a.is-active {
+		color: #d4f5c0;
+	}
+
 	@media (max-width: 700px) {
 		#nav-toggle {
 			display: block;
@@ -129,39 +135,49 @@ const coursework = await getCollection('coursework'); // reads every file in /sr
 
 </style>
 
-<button id="nav-toggle" aria-label="Toggle navigation" aria-expanded="true">
+<button id="nav-toggle" aria-label="Toggle navigation" aria-controls="terminal" aria-expanded="true">
 	☰
 </button>
 
 <div id="terminal">
 	<nav class="terminal-nav">
-		<h2 class="terminal-title"><a href="/">{SITE_TITLE}</a></h2>
+		<!-- <h2 class="terminal-title"><a href="/">{SITE_TITLE}</a></h2> May end up using later to show which page you are on-->
 		
 		<p class="terminal-prompt">guest@mdevito:~$ cd /var/log/michael</p>
 		<p class="terminal-prompt" id="blink">guest@mdevito:/var/log/michael$ ls -la</p>
 
-		<details>
+		<details open={currentPath.startsWith('/projects/')}>
 			<summary>&gt; projects/</summary>
 			<ul>
 				{ projects.map((project) => (
 					<li>
-						<a class="nav-link file" href={`/projects/${project.id}`}>{project.data.title}</a>
+						<a
+							class:list={['nav-link', 'file', { 'is-active': currentPath === `/projects/${project.id}` }]}
+							aria-current={currentPath === `/projects/${project.id}` ? 'page' : undefined}
+							href={`/projects/${project.id}`}
+						>{project.data.title}</a>
 					</li>
 				))}
 			</ul>
 		</details>
-		<details>
+		<details open={currentPath.startsWith('/coursework/')}>
 			<summary>&gt; coursework/</summary>
 			<ul>
 				{ coursework.map((work) => (
 					<li>
-						<a class="nav-link file" href={`/coursework/${work.id}`}>{work.data.title}</a>
+						<a
+							class:list={['nav-link', 'file', { 'is-active': currentPath === `/coursework/${work.id}` }]}
+							aria-current={currentPath === `/coursework/${work.id}` ? 'page' : undefined}
+							href={`/coursework/${work.id}`}
+						>{work.data.title}</a>
 					</li>
 				))}
 			</ul>
 		</details>
-		<a class="file">certs.md</a>
-		<a class="file">resume.md</a>
+		<a class="file" href="/certs">certs.md</a>
+		<a class="file" href="/resume">resume.md</a>
+
+		<p class="terminal-prompt" id="cat">guest@mdevito:~$ cat {shortPath === "" ? "index.html" : shortPath}</p>
 
 	</nav>
 </div>
@@ -169,9 +185,31 @@ const coursework = await getCollection('coursework'); // reads every file in /sr
 <script>
 	const toggle = document.querySelector('#nav-toggle');
 	const terminal = document.querySelector('#terminal');
+	const normalizePath = (path: string) => path.replace(/\/$/, '') || '/';
+
+	const syncActiveLink = () => {
+		const currentPath = normalizePath(window.location.pathname);
+
+		document.querySelectorAll<HTMLAnchorElement>('.terminal-nav a[href]').forEach((link) => {
+			const isActive = normalizePath(new URL(link.href).pathname) === currentPath;
+			link.classList.toggle('is-active', isActive);
+
+			if (isActive) {
+				link.setAttribute('aria-current', 'page');
+				link.closest('details')?.setAttribute('open', '');
+			} else {
+				link.removeAttribute('aria-current');
+			}
+		});
+	};
 
 	toggle?.addEventListener('click', () => {
 		const isHidden = terminal?.classList.toggle('is-hidden');
 		toggle.setAttribute('aria-expanded', String(!isHidden));
 	});
+
+	syncActiveLink();
+	document.addEventListener('astro:page-load', syncActiveLink);
+	
+
 </script>
