@@ -2,7 +2,7 @@
 
 	Michael DeVito II
 	global.css
-	Taken from Astro default, will be edited when necessary.
+	Taken from Astro default, will be edited when
 
 */
 
@@ -23,7 +23,7 @@ body {
 	word-wrap: break-word;
 	overflow-wrap: break-word;
 	color: rgb(var(--gray-dark));
-	font-size: 20px;
+	font-size: 16px;
 	line-height: 1.7;
 }
 h1,
@@ -37,19 +37,19 @@ h6 {
 	line-height: 1.2;
 }
 h1 {
-	font-size: 3.052em;
+	font-size: 40px;
 }
 h2 {
-	font-size: 2.441em;
+	font-size: 35px;
 }
 h3 {
-	font-size: 1.953em;
+	font-size: 30px;
 }
 h4 {
-	font-size: 1.563em;
+	font-size: 28px;
 }
 h5 {
-	font-size: 1.25em;
+	font-size: 25px;
 }
 strong,
 b {
