@@ -147,7 +147,7 @@ const shortPath = currentPath.split("/").pop();
 	<nav class="terminal-nav">
 		<!-- <h2 class="terminal-title"><a href="/">{SITE_TITLE}</a></h2> May end up using later to show which page you are on-->
 		
-		<p><span class="terminal-prompt">guest@mdevito:~$</span><span class="terminal-command"> cd /var/log/michael</span></p>
+		<p><span class="terminal-prompt">guest@mdevito:~$ </span><a href="/" class="terminal-command">cd /var/log/michael</a></p>
 		<p><span class="terminal-prompt">guest@mdevito:/var/log/michael$</span><span class="terminal-command"> ls -la</span><span id="blink"> </span></p>
 
 		<details open={currentPath.startsWith('/projects/')}>
