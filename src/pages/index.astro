@@ -2,10 +2,8 @@
 import Main from '../layouts/Main.astro';
 ---
 
-<Main
-	image="/images/profile.png"
-	imageAlt="Michael DeVito"
->
+<Main>
+	<img class="index-image" src="/images/profile.png" alt="Michael DeVito" />
 	<h1>Hello World!</h1>
 	<p>
 		My name is Michael, and welcome to my personal portfolio. I am a Senior Cybersecurity Major at Messiah University, with a minor in Web Development.
@@ -32,3 +30,22 @@ import Main from '../layouts/Main.astro';
 	</p>
 
 </Main>
+
+<style>
+	.index-image {
+		float: right;
+		width: min(280px, 40%);
+		height: auto;
+		margin: 0 0 1.5rem 2rem;
+	}
+
+	@media (max-width: 700px) {
+		.index-image {
+			float: none;
+			display: block;
+			width: 100%;
+			max-width: 100%;
+			margin: 0 0 1rem;
+		}
+	}
+</style>

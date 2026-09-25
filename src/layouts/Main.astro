@@ -4,7 +4,7 @@ import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Sidebar from '../components/Sidebar.astro'; 
 
-const { title, description, image, imageAlt = '' } = Astro.props;
+const { title, description } = Astro.props;
 ---
 
 <!-- Michael DeVito II -->
@@ -34,7 +34,6 @@ const { title, description, image, imageAlt = '' } = Astro.props;
             </aside>
 
             <main class="content">
-                {image && <img class="content-image" src={image} alt={imageAlt} />}
                 <slot />
             </main>
 
@@ -138,13 +137,6 @@ const { title, description, image, imageAlt = '' } = Astro.props;
         color: white;
     }
 
-    .content-image {
-        float: right;
-        width: min(280px, 40%);
-        height: auto;
-        margin: 0 0 1.5rem 2rem;
-    }
-
     .footer {
         grid-area: footer;
         position: relative;
@@ -166,14 +158,6 @@ const { title, description, image, imageAlt = '' } = Astro.props;
 
         .content {
             padding: 1rem;
-        }
-
-        .content-image {
-            float: none;
-            display: block;
-            width: 100%;
-            max-width: 100%;
-            margin: 0 0 1rem;
         }
 
         .sidebar {
