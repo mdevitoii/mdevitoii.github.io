@@ -1,8 +1,116 @@
 ---
 import Main from '../layouts/Main.astro';
+
 ---
 
 <Main title="Certifications">
-	<h1>Certifications</h1>
-	<p>Below is a list of all cybersecurity-related certifications I have achieved, including ones that I am currently studying for.</p>
+	<div class="certs-content">
+		<h1>Certifications</h1>
+		<p>Below is a list of all cybersecurity-related certifications I have achieved, including ones that I am currently studying for.</p>
+		<br>
+	</div>
+
+	<div class="certs-content">
+
+		<section class="cert-entry">
+			<img class="cert-image" src="/images/certs/pentestplus.png" alt="CompTIA Pentest+ Badge" />
+			<h3>CompTIA Pentest+</h3>
+			<p class="info"><span class="status status--progress"><span aria-hidden="true"></span>In progress</span>Exam November 2026</p>
+			<p>I am currently studying for the Pentest+ exam as part of the Ethical Hacking course at Messiah University. I am using the Sybex test prep book, as well as online videos and articles to study. I plan on doing interactive labs in preparation for my exam, which is scheduled in November.</p>
+		</section>
+
+		<section class="cert-entry">
+			<img class="cert-image" src="/images/certs/securityplus.png" alt="CompTIA Security+ Badge" />
+			<h3>CompTIA Security+</h3>
+			<p class="info"><span class="status status--complete"><span aria-hidden="true"></span>Completed</span>Earned April 2026</p>
+			<p>I earned the Security+ cert while taking the Network Security course at Messiah University. I studied using the Sybex test prep book, as well as online videos and practice tests from Dion Training. I studied throughout the Spring 2026 semester and passed the exam in April 2026.</p>
+		</section>
+
+		<section class="cert-entry">
+			<img class="cert-image" src="/images/certs/networkplus.png" alt="CompTIA Network+ Badge" />
+			<h3>CompTIA Network+</h3>
+			<p class="info"><span class="status status--complete"><span aria-hidden="true"></span>Completed</span>Earned December 2025</p>
+			<p>I earned the Network+ cert while taking the Data Communications & Networking course at Messiah University. I studied using the Sybex test prep book, as well as online videos from Professor Messer and practice tests from Dion Training. I studied for this exam in the same semester as the Linux+ exam, and passed both within one week of each other in December 2025.</p>
+		</section>
+
+		<section class="cert-entry">
+			<img class="cert-image" src="/images/certs/linuxplus.png" alt="CompTIA Linux+ Badge" />
+			<h3>CompTIA Linux+</h3>
+			<p class="info"><span class="status status--complete"><span aria-hidden="true"></span>Completed</span>Earned December 2025</p>
+			<p>I earned the Linux+ cert while taking the NIX System Administration & Security course at Messiah University. I studied using the Sybex test prep book, as well as online videos and practice tests from Dion Training. I studied for this exam in the same semester as the Network+ exam, and passed both within one week of each other in December 2025.</p>
+		</section>
+
+	</div>
+
 </Main>
+
+<style>
+	.cert-entry {
+		display: flow-root;
+		padding: 1.5rem 0;
+		border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+	}
+
+	.cert-entry:first-child {
+		padding-top: 0;
+	}
+
+	.cert-entry:last-child {
+		border-bottom: 0;
+	}
+
+	.info {
+		margin: -0.25rem 0 0.75rem;
+		color: #94a3b8;
+		font-size: 0.95rem;
+		font-style: italic;
+	}
+
+	.status {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.35rem;
+		margin-right: 0.45rem;
+		padding: 0.2rem 0.45rem;
+		border: 1px solid currentColor;
+		font-size: 0.65rem;
+		font-weight: 100;
+		line-height: 1;
+		vertical-align: middle;
+		text-transform: uppercase;
+		letter-spacing: 0.04em;
+		font-style: normal;
+	}
+
+	.status > span {
+		width: 0.4rem;
+		height: 0.4rem;
+		border-radius: 50%;
+		background: currentColor;
+	}
+
+	.status--complete {
+		color: #86efac;
+	}
+
+	.status--progress {
+		color: #fbbf24;
+	}
+
+	.cert-image {
+		float: right;
+		width: auto;
+		height: auto;
+		margin: 0 0 1.5rem 2rem;
+	}
+
+	@media (max-width: 700px) {
+		.cert-image {
+			float: none;
+			display: block;
+			width: 100%;
+			max-width: 100%;
+			margin: 0 0 1rem;
+		}
+	}
+</style>
