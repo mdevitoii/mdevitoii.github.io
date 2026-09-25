@@ -92,6 +92,12 @@ img {
 	height: auto;
 	border-radius: 8px;
 }
+.markdown-content img {
+	float: right;
+	width: min(280px, 40%);
+	height: auto;
+	margin: 0 0 1.5rem 2rem;
+}
 code {
 	padding: 2px 5px;
 	background-color: rgb(var(--gray-light));
@@ -120,6 +126,13 @@ hr {
 	}
 	main {
 		padding: 1em;
+	}
+	.markdown-content img {
+		float: none;
+		display: block;
+		width: 100%;
+		max-width: 100%;
+		margin: 0 0 1rem;
 	}
 }
 
