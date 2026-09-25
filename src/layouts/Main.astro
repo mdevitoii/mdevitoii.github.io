@@ -18,13 +18,18 @@ const { title, description } = Astro.props; // grabs vars from props
     <body>
         <div class="page-layout">
             <header class="header">
-                <a href="/">/var/log/Michael</a>
+                <a href="/">/var/log/michael</a>
+                <nav class="header-links" aria-label="Contact links">
+                    <a href="https://www.linkedin.com/in/mdevitoii">LinkedIn</a>
+                    <a href="https://github.com/mdevitoii">GitHub</a>
+                    <a href="mailto:mdevitoii04@gmail.com">Email</a>
+                </nav>
             </header>
 
             <aside class="sidebar">
                 <div class="terminal">
                     <div class="terminal-bar">guest@mdevito:~</div>
-                    <Sidebar transition:persist />
+                    <Sidebar />
                 </div>
             </aside>
 
@@ -64,9 +69,13 @@ const { title, description } = Astro.props; // grabs vars from props
         left: 0;
         width: 100%;
         box-sizing: border-box;
-        padding: 1rem 2rem;
+        padding: 1rem 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
         border-bottom: 1px solid #334155;
-        background: #0b1020;
+        background: #0b0e14;
         z-index: 20;
     }
 
@@ -76,27 +85,37 @@ const { title, description } = Astro.props; // grabs vars from props
         font-weight: bold;
     }
 
+    .header-links {
+        display: flex;
+        gap: 1rem;
+        font-size: 0.85rem;
+    }
+
+    .header-links a {
+        font-weight: normal;
+    }
+
     .sidebar {
         grid-area: sidebar;
         position: fixed;
         top: var(--header-height);
         left: 0;
-        width: 30vw;
-        height: 100vh;
+        width: 25vw;
+        height: calc(100vh - var(--header-height));
         box-sizing: border-box;
         overflow-y: auto;
-        padding: 1rem;
-        z-index: 10;
+        padding: 0;
+        z-index: 1;
     }
 
     .terminal {
-        top: 1rem;
         overflow: hidden;
         width: 100%;
+        height: 100%;
         box-sizing: border-box;
         border: 1px solid #334155;
-        border-radius: 0.75rem;
-        background: #111827;
+        border-radius: 0;
+        background: #0b0e14;
     }
 
     .terminal-bar {
@@ -109,13 +128,22 @@ const { title, description } = Astro.props; // grabs vars from props
     .content {
         grid-area: content;
         min-width: 0;
-        padding: 2rem;
+        width: 100%;
+        max-width: none;
+        margin: 0;
+        box-sizing: border-box;
+        padding: 4rem;
+        background-color: #131924;
+        color: white;
     }
 
     .footer {
         grid-area: footer;
-        padding: 1rem 2rem;
+        position: relative;
+        padding: 1rem 1rem;
         border-top: 1px solid #334155;
+        background: #0b0e14;
+        z-index: 2;
     }
 
     @media (max-width: 700px) {
@@ -130,6 +158,13 @@ const { title, description } = Astro.props; // grabs vars from props
 
         .content {
             padding: 1rem;
+        }
+
+        .sidebar {
+            position: static;
+            width: 100%;
+            height: auto;
+            min-height: 0;
         }
 
         .terminal {

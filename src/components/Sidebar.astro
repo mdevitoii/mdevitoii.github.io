@@ -25,7 +25,7 @@ const shortPath = currentPath.split("/").pop();
 	}
 
 	.terminal-title {
-		color: #6fae57;
+		color: #2a5c84;
 	}
 
 	.terminal-title a::before {
@@ -33,11 +33,15 @@ const shortPath = currentPath.split("/").pop();
 	}
 
 	.terminal-prompt {
-		color: #6fae57;
+		color: #2a5c84;
+	}
+
+	.terminal-command {
+		color: #3767aa;
 	}
 
 	#blink {
-		color: #6fae57;
+		color: #3767aa;
 	}
 
 	#blink::after {
@@ -62,7 +66,7 @@ const shortPath = currentPath.split("/").pop();
 
 	.terminal-nav summary {
 		cursor: pointer;
-		color: #8fbf7a;
+		color: #3767aa;
 		list-style: none;
 	}
 
@@ -72,7 +76,7 @@ const shortPath = currentPath.split("/").pop();
 
 	.terminal-nav summary::before {
 		content: 'drwxr-xr-x   ';
-		color: #4a7a3a;
+		color: #2a5c84;
 	}
 
 	.nav-link {
@@ -80,7 +84,7 @@ const shortPath = currentPath.split("/").pop();
 	}
 
 	.terminal-nav a {
-		color: #8fbf7a;
+		color: #3767aa;
 		text-decoration: none;
 	}
 
@@ -106,16 +110,16 @@ const shortPath = currentPath.split("/").pop();
 
 	.file::before {
 		content: '-rw-r--r--   ';
-		color: #4a7a3a;
+		color: #2a5c84;
 	}
 
 	.terminal-nav a:hover {
-		color: #d4f5c0;
+		color: #4eaaf6;
 		text-decoration: underline;
 	}
 
 	.terminal-nav a.is-active {
-		color: #d4f5c0;
+		color: #4eaaf6;
 	}
 
 	@media (max-width: 700px) {
@@ -143,8 +147,8 @@ const shortPath = currentPath.split("/").pop();
 	<nav class="terminal-nav">
 		<!-- <h2 class="terminal-title"><a href="/">{SITE_TITLE}</a></h2> May end up using later to show which page you are on-->
 		
-		<p class="terminal-prompt">guest@mdevito:~$ cd /var/log/michael</p>
-		<p class="terminal-prompt" id="blink">guest@mdevito:/var/log/michael$ ls -la</p>
+		<p><span class="terminal-prompt">guest@mdevito:~$</span><span class="terminal-command"> cd /var/log/michael</span></p>
+		<p><span class="terminal-prompt">guest@mdevito:/var/log/michael$</span><span class="terminal-command"> ls -la</span><span id="blink"> </span></p>
 
 		<details open={currentPath.startsWith('/projects/')}>
 			<summary>&gt; projects/</summary>
@@ -177,7 +181,7 @@ const shortPath = currentPath.split("/").pop();
 		<a class="file" href="/certs">certs.md</a>
 		<a class="file" href="/resume">resume.md</a>
 
-		<p class="terminal-prompt" id="cat">guest@mdevito:~$ cat {shortPath === "" ? "index.html" : shortPath}</p>
+		<p><span class="terminal-prompt" id="cat">guest@mdevito:~$</span><span class="terminal-command"> cat {shortPath === "" ? "index.html" : shortPath}</span></p>
 
 	</nav>
 </div>
