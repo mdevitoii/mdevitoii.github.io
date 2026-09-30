@@ -13,12 +13,34 @@ type Props = CollectionEntry<'coursework'>;
 
 const post = Astro.props;
 const { Content } = await render(post);
+const updatedDate = post.data.updatedDate?.toLocaleDateString();
 ---
 <!-- Michael DeVito II -->
 <Main>
-	<h1>{post.data.title}</h1>
-	<p>{post.data.description}</p>
+	<h1 class="post-title">{post.data.title}</h1>
+	<p class="post-meta">{updatedDate && `Last Updated ${updatedDate}`}</p>
 	<div class="markdown-content">
 		<Content />
 	</div>
 </Main>
+
+<style>
+	.post-title {
+		margin-bottom: 0.75rem;
+		text-decoration-line: underline;
+		text-decoration-color: #94a3b8;
+		text-decoration-thickness: 3px;
+		text-underline-offset: 0.18em;
+	}
+
+	.post-meta {
+		margin: 0 0 2rem;
+		padding-left: 0.85rem;
+		border-left: 2px solid #334155;
+		color: #94a3b8;
+		font-size: 0.85em;
+		font-style: italic;
+		line-height: 1.5;
+	}
+</style>
+
