@@ -58,6 +58,7 @@ const shortPath = currentPath.split("/").pop();
 		display: flex;
 		flex-direction: column;
 		gap: 0.75rem;
+		font-size: 18px;
 	}
 
 	.terminal-nav > * {
@@ -68,6 +69,14 @@ const shortPath = currentPath.split("/").pop();
 		cursor: pointer;
 		color: #3767aa;
 		list-style: none;
+		text-decoration: none;
+	}
+	.terminal-nav summary:hover {
+		color: #4eaaf6;
+	}
+
+	.terminal-nav summary .link-text {
+		color: #7dd3fc;
 	}
 
 	.terminal-nav summary::-webkit-details-marker {
@@ -84,8 +93,18 @@ const shortPath = currentPath.split("/").pop();
 	}
 
 	.terminal-nav a {
-		color: #3767aa;
+		color: #7dd3fc;
 		text-decoration: none;
+	}
+
+	.terminal-nav .link-text {
+		text-decoration: underline;
+		text-decoration-color: #3767aa;
+		text-underline-offset: 0.2em;
+	}
+
+	.terminal-nav a.terminal-command .link-text {
+		color: #7dd3fc;
 	}
 
 	.terminal-nav li {
@@ -115,7 +134,12 @@ const shortPath = currentPath.split("/").pop();
 
 	.terminal-nav a:hover {
 		color: #4eaaf6;
-		text-decoration: underline;
+	}
+
+	.terminal-nav a:hover .link-text,
+	.terminal-nav summary:hover .link-text {
+		color: #4eaaf6;
+		text-decoration-color: currentColor;
 	}
 
 	.terminal-nav a.is-active {
@@ -147,11 +171,11 @@ const shortPath = currentPath.split("/").pop();
 	<nav class="terminal-nav">
 		<!-- <h2 class="terminal-title"><a href="/">{SITE_TITLE}</a></h2> May end up using later to show which page you are on-->
 		
-		<p><span class="terminal-prompt">guest@mdevito:~$ </span><a href="/" class="terminal-command">cd /var/log/michael</a></p>
+		<p><span class="terminal-prompt">guest@mdevito:~$ </span><a href="/" class="terminal-command"><span class="link-text">cd /var/log/michael</span></a></p>
 		<p><span class="terminal-prompt">guest@mdevito:/var/log/michael$</span><span class="terminal-command"> ls -la</span><span id="blink"> </span></p>
 
 		<details open={currentPath.startsWith('/projects/')}>
-			<summary>&gt; projects/</summary>
+			<summary><span class="link-text">&gt; projects/</span></summary>
 			<ul>
 				{ projects.map((project) => (
 					<li>
@@ -159,13 +183,13 @@ const shortPath = currentPath.split("/").pop();
 							class:list={['nav-link', 'file', { 'is-active': currentPath === `/projects/${project.id}` }]}
 							aria-current={currentPath === `/projects/${project.id}` ? 'page' : undefined}
 							href={`/projects/${project.id}`}
-						>{project.data.title}</a>
+						><span class="link-text">{project.data.title}</span></a>
 					</li>
 				))}
 			</ul>
 		</details>
 		<details open={currentPath.startsWith('/coursework/')}>
-			<summary>&gt; coursework/</summary>
+			<summary><span class="link-text">&gt; coursework/</span></summary>
 			<ul>
 				{ coursework.map((work) => (
 					<li>
@@ -173,13 +197,13 @@ const shortPath = currentPath.split("/").pop();
 							class:list={['nav-link', 'file', { 'is-active': currentPath === `/coursework/${work.id}` }]}
 							aria-current={currentPath === `/coursework/${work.id}` ? 'page' : undefined}
 							href={`/coursework/${work.id}`}
-						>{work.data.title}</a>
+						><span class="link-text">{work.data.title}</span></a>
 					</li>
 				))}
 			</ul>
 		</details>
-		<a class="file" href="/certs">certs.md</a>
-		<a class="file" href="/resume">resume.md</a>
+		<a class="file" href="/certs"><span class="link-text">certs.md</span></a>
+		<a class="file" href="/resume"><span class="link-text">resume.md</span></a>
 
 		<p><span class="terminal-prompt" id="cat">guest@mdevito:~$</span><span class="terminal-command"> cat {shortPath === "" ? "index.html" : shortPath}</span></p>
 
