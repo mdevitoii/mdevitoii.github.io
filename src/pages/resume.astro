@@ -3,7 +3,7 @@ import Main from '../layouts/Main.astro';
 ---
 <!-- Michael DeVito II -->
 <Main title="Resume">
-	<h1>Resume</h1>
+	<h1 class="post-title">Resume</h1>
 	<p>
 		<a href="/MDeVito-Resume.pdf" target="_blank" rel="noreferrer">Open in a new tab</a>
 	</p>
@@ -16,6 +16,14 @@ import Main from '../layouts/Main.astro';
 </Main>
 
 <style>
+	.post-title {
+		margin-bottom: 0.75rem;
+		text-decoration-line: underline;
+		text-decoration-color: #94a3b8;
+		text-decoration-thickness: 3px;
+		text-underline-offset: 0.18em;
+	}
+
 	iframe {
 		border: 1px solid #334155;
 		background: white;

@@ -4,7 +4,7 @@ import Main from '../layouts/Main.astro';
 <!-- Michael DeVito II -->
 <Main>
 	<img class="index-image" src="/images/profile.png" alt="Michael DeVito" />
-	<h1>Hello World!</h1>
+	<h1 class="post-title">Hello World!</h1>
 	<p>
 		My name is Michael, and welcome to my personal portfolio. I am a Senior Cybersecurity Major at Messiah University, with a minor in Web Development.
 		I plan to graduate in the Spring 2027 semester, and I am currently seeking an entry-level position within the cybersecurity field.
@@ -31,6 +31,14 @@ import Main from '../layouts/Main.astro';
 </Main>
 
 <style>
+	.post-title {
+		margin-bottom: 0.75rem;
+		text-decoration-line: underline;
+		text-decoration-color: #94a3b8;
+		text-decoration-thickness: 3px;
+		text-underline-offset: 0.18em;
+	}
+
 	.index-image {
 		float: right;
 		width: min(280px, 40%);

@@ -5,7 +5,7 @@ import Main from '../layouts/Main.astro';
 <!-- Michael DeVito II -->
 <Main title="Certifications">
 	<div class="certs-content">
-		<h1>Certifications</h1>
+		<h1 class="post-title">Certifications</h1>
 		<p>Below is a list of all cybersecurity-related certifications I have achieved, including ones that I am currently studying for.</p>
 		<br>
 	</div>
@@ -45,6 +45,14 @@ import Main from '../layouts/Main.astro';
 </Main>
 
 <style>
+	.post-title {
+		margin-bottom: 0.75rem;
+		text-decoration-line: underline;
+		text-decoration-color: #94a3b8;
+		text-decoration-thickness: 3px;
+		text-underline-offset: 0.18em;
+	}
+
 	.cert-entry {
 		display: flow-root;
 		padding: 1.5rem 0;
