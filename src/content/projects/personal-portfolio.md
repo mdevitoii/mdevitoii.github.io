@@ -1,8 +1,9 @@
 ---
 title: 'Personal Portfolio'
 description: 'Creating my portfolio'
+keywords: 'Astro, HTML, CSS, GitHub'
 pubDate: 'Sep 25 2026'
-updatedDate: 'Sep 30 2026'
+updatedDate: 'Oct 3 2026'
 ---
 
 ## Developing /var/log/michael
