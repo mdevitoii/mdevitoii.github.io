@@ -28,10 +28,16 @@ To begin this demo, I created three virtual machines on my homelab infrastructur
     - Utilized as the "attacker" VM.
 
 ### Step 1: Reconaissance
+
+![nmap output](/images/EH-nmap.png)
+
 To demonstrate this step of the chain, I utilized nmap to scan the victim machine and determine that the vulnereable version of Exim4 was running. The screenshot on the left shows the nmap output, verifying that a vulnerable version of Exim4 is running on the victim machine at port 25.
 
 ### Step 2: Initial Access
-As mentioned, initial access is assumed for the local exploitation of this vulnerability. I established that initial access using a simple reverse shell, a command run on the victim machine as the low-level user *john* that sends shell input and output to the attacker machine at a specific port. This allows the attacker, who is listening on that port, to send and receive commands as the user *john* on the victim machine, despite being on the attacking machine. Below are the commands I utilized:
+
+![reverse shell](/images/EH-shell.png)
+
+As mentioned, initial access is assumed for the local exploitation of this vulnerability. I established that initial access using a simple reverse shell, a command run on the victim machine as the low-level user *john* that sends shell input and output to the attacker machine at a specific port. This allows the attacker, who is listening on that port, to send and receive commands as the user *john* on the victim machine, despite being on the attacking machine as demonstrated in the left image. Below are the commands I utilized:
 
 - Attacker Machine: `nc -lvnp 4444`
     - Starting a listening process at port 4444, waiting for incoming connection from the victim machine.
@@ -42,9 +48,15 @@ As mentioned, initial access is assumed for the local exploitation of this vulne
 Now that I have access to run commands as the low-level user *john*, I can build the script that will be used to exploit this vulnerability. To summarize, the script creates an email with the receiver address including a command to create a new reverse shell within the `${run{...}}` string expansion. This email is then sent to the victim machine locally, and the email server processes and runs the command as the *root* user, creating a new reverse shell. The script then waits until the shell is established, then attatches to that shell and provides the attacker input and output to the new *root* shell.
 
 ### Step 4: Exploitation
+
+![root access](/images/EH-whoami.png)
+
 Once the script has been placed on the victim machine, execute permissions are added and the script can be run. As the script runs, the attacker sees that their shell changes from *john@victim* to *root@victim*, confirming that the exploit successfully worked. Root-level access can be further verified using commands such as `id` or `whoami`, which show the shell running as the root user.
 
 ### Step 5: Post-Exploit
+
+![flag output](/images/EH-flag.png)
+
 After the exploit was accomplished, I searched the *root* user's home directory to find **flag.txt**, a file that can only be read by the *root* user. To verify that I had successfully exploited the machine, I ran the command `cat flag.txt` and was able to see the contents of the flag, which I would only be able to see as the *root* user. 
 
 From here, if I was an unethical hacker, I could cause complete chaos on this system. I could exfiltrate emails, establish persistence, laterally move throughout the network, or fully compromise the machine. This exploit goes undetected unless log files are being monitored, so I could be in this system for an extended amount of time without detection.
