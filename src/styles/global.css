@@ -80,8 +80,9 @@ img {
 }
 code {
 	padding: 2px 5px;
-	background-color: rgb(var(--gray-light));
+	background-color: rgba(219, 234, 254, 0.75);
 	border-radius: 2px;
+	color: #0f172a;
 }
 pre {
 	padding: 1.5em;

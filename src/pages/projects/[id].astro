@@ -14,10 +14,13 @@ type Props = CollectionEntry<'projects'>;
 const post = Astro.props;
 const { Content } = await render(post);
 const updatedDate = post.data.updatedDate?.toLocaleDateString();
+const keywords = post.data.keywords;
+
 ---
 <!-- Michael DeVito II -->
 <Main>
 	<h1 class="post-title">{post.data.title}</h1>
+	<p class="post-meta">{keywords && `Keywords: ${keywords}`}</p>
 	<p class="post-meta">{updatedDate && `Last Updated ${updatedDate}`}</p>
 	<div class="markdown-content">
 		<Content />
@@ -30,7 +33,7 @@ const updatedDate = post.data.updatedDate?.toLocaleDateString();
 		text-decoration-line: underline;
 		text-decoration-color: #94a3b8;
 		text-decoration-thickness: 3px;
-		text-underline-offset: 0.18em;
+		text-underline-offset: 0.25em;
 	}
 
 	.post-meta {
@@ -41,5 +44,9 @@ const updatedDate = post.data.updatedDate?.toLocaleDateString();
 		font-size: 0.85em;
 		font-style: italic;
 		line-height: 1.5;
+	}
+
+	.post-meta:first-of-type {
+		margin-bottom: 0.25rem;
 	}
 </style>

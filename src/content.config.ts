@@ -10,7 +10,7 @@ const projects = defineCollection({
 			description: z.string(),
 			pubDate: z.coerce.date(),
 			updatedDate: z.coerce.date().optional(),
-			heroImage: z.optional(image()),
+			keywords: z.string().optional(),
 		}),
 });
 
@@ -22,7 +22,7 @@ const coursework = defineCollection({
 			description: z.string(),
 			pubDate: z.coerce.date(),
 			updatedDate: z.coerce.date().optional(),
-			heroImage: z.optional(image()),
+			keywords: z.string().optional(),
 		}),
 });
 
